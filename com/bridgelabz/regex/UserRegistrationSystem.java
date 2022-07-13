@@ -8,13 +8,16 @@ import java.util.regex.Pattern;
 public class UserRegistrationSystem {
 
     final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
+    final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
 
     public static void main(String[] args) {
         System.out.println("User Registration System program");
 
         UserRegistrationSystem userRegistrationSystem = new UserRegistrationSystem();
         System.out.println("Enter First Name");
-        userRegistrationSystem.isValidName(Input.inputStringValue());
+        userRegistrationSystem.isValidFirstName(Input.inputStringValue());
+        System.out.println("Enter Last Name");
+        userRegistrationSystem.isValidLastName(Input.inputStringValue());
     }
 
     private static boolean isValidInput(String regex, String UserInput) {
@@ -28,13 +31,25 @@ public class UserRegistrationSystem {
         return b;
     }
 
-    private void isValidName(String name) {
+    private void isValidFirstName(String firstName) {
 
         try {
-            if (isValidInput(FIRST_NAME_PATTERN, name)) {
-                System.out.println("Valid Name : " + name);
+            if (isValidInput(FIRST_NAME_PATTERN, firstName)) {
+                System.out.println("Valid First Name : " + firstName);
             } else {
-                throw new InvalidUserInformationException("Invalid Name : " + name);
+                throw new InvalidUserInformationException("Invalid First Name : " + firstName);
+            }
+        } catch (InvalidUserInformationException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void isValidLastName(String lastName) {
+        try {
+            if (isValidInput(LAST_NAME_PATTERN, lastName)) {
+                System.out.println("Valid Last Name : " + lastName);
+            } else {
+                throw new InvalidUserInformationException("Invalid Last Name : " + lastName);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
