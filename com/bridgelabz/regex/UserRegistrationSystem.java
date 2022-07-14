@@ -12,7 +12,7 @@ public class UserRegistrationSystem {
 
     static final String EMAIL_ID_PATTERN = "^[a-zA-Z0-9]+?([.])*[?a-zA-Z0-9]*[@][b][l][.][c][o]?([.])?([a-z]{2})$";
     static final String MOBILE_NUMBER_PATTERN = "^[91]{2}[ ][6789]{1}[0-9]{9}$";
-    static final String PASSWORD_PATTERN = "(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}";
+    static final String PASSWORD_PATTERN = "(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&]{1}).{8,}";
 
     public static void main(String[] args) {
         System.out.println("User Registration System program");
