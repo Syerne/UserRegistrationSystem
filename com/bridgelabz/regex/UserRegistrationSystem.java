@@ -12,6 +12,7 @@ public class UserRegistrationSystem {
 
     static final String EMAIL_ID_PATTERN = "^[a-zA-Z0-9]+?([.])*[?a-zA-Z0-9]*[@][b][l][.][c][o]?([.])?([a-z]{2})$";
     static final String MOBILE_NUMBER_PATTERN = "^[91]{2}[ ][6789]{1}[0-9]{9}$";
+    static final String PASSWORD_PATTERN = "[a-zA-z0-9]{8,}";
 
     public static void main(String[] args) {
         System.out.println("User Registration System program");
@@ -26,6 +27,8 @@ public class UserRegistrationSystem {
         userRegistrationSystem.isValidLastName(Input.inputStringValue());
         System.out.println("Enter Given Email Id");
         userRegistrationSystem.isValidEmailId(Input.inputStringValue());
+        System.out.println("Enter Your Password");
+        userRegistrationSystem.isValidPassword(Input.inputStringValue());
     }
 
     private static boolean isValidInput(String regex, String UserInput) {
@@ -37,6 +40,18 @@ public class UserRegistrationSystem {
         boolean b = m.matches();*/
 
         return b;
+    }
+
+    private void isValidPassword(String password) {
+        try {
+            if (isValidInput(PASSWORD_PATTERN, password)) {
+                System.out.println("Valid Password");
+            } else {
+                throw new InvalidUserInformationException("Invalid Password : " + password);
+            }
+        } catch (InvalidUserInformationException e) {
+            System.out.println(e);
+        }
     }
 
     private void isValidEmailId(String emailId) {
