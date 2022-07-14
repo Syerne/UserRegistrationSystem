@@ -10,7 +10,7 @@ public class UserRegistrationSystem {
     static final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
     static final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
 
-    static final String EMAIL_ID_PATTERN = "^[a-zA-Z0-9]+?([.])*[?a-zA-Z0-9]*[@][b][l][.][c][o]?([.])?([a-z]{2})$";
+    static final String EMAIL_ID_PATTERN = "[a-zA-Z0-9]+[-.+]?[a-z0-9]*@[a-z0-9]+[.][a-z]{2,3}[.]?[a-z]{0,3}";
     static final String MOBILE_NUMBER_PATTERN = "^[91]{2}[ ][6789]{1}[0-9]{9}$";
     static final String PASSWORD_PATTERN = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&]{1}).{8,}";
 
