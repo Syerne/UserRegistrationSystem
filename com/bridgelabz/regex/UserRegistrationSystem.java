@@ -10,6 +10,7 @@ public class UserRegistrationSystem {
     static final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
     static final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
 
+    static final String EMAIL_ID_PATTERN = "^[a-zA-Z0-9]+?([.])*[?a-zA-Z0-9]*[@][b][l][.][c][o]?([.])?([a-z]{2})$";
     static final String MOBILE_NUMBER_PATTERN = "^[91]{2}[ ][6789]{1}[0-9]{9}$";
 
     public static void main(String[] args) {
@@ -23,6 +24,8 @@ public class UserRegistrationSystem {
         userRegistrationSystem.isValidFirstName(Input.inputStringValue());
         System.out.println("Enter Last Name");
         userRegistrationSystem.isValidLastName(Input.inputStringValue());
+        System.out.println("Enter Given Email Id");
+        userRegistrationSystem.isValidEmailId(Input.inputStringValue());
     }
 
     private static boolean isValidInput(String regex, String UserInput) {
@@ -36,14 +39,27 @@ public class UserRegistrationSystem {
         return b;
     }
 
+    private void isValidEmailId(String emailId) {
+        try {
+            if (isValidInput(EMAIL_ID_PATTERN, emailId)) {
+                System.out.println("Valid Email Id");
+            } else {
+                throw new InvalidUserInformationException("Invalid EmailId : " + emailId);
+            }
+        } catch (InvalidUserInformationException e) {
+            System.out.println(e);
+
+        }
+    }
+
     private void isValidMobileNumber(String mobileNumber) {
         try {
-        if (isValidInput(MOBILE_NUMBER_PATTERN, mobileNumber)) {
-            System.out.println("Valid Mobile Number");
-        } else {
-            throw new InvalidUserInformationException("Invalid Mobile Number");
-        }
-        }catch (InvalidUserInformationException e){
+            if (isValidInput(MOBILE_NUMBER_PATTERN, mobileNumber)) {
+                System.out.println("Valid Mobile Number");
+            } else {
+                throw new InvalidUserInformationException("Invalid Mobile Number");
+            }
+        } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
     }
