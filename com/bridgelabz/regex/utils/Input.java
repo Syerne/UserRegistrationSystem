@@ -8,4 +8,7 @@ public class Input {
     public static String inputStringValue(){
         return sc.next();
     }
+    public static String inputStringLineValue(){
+        return sc.nextLine();
+    }
 }

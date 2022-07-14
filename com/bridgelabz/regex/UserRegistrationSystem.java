@@ -7,13 +7,18 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationSystem {
 
-    final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
-    final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
+    static final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
+    static final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
+
+    static final String MOBILE_NUMBER_PATTERN = "^[91]{2}[ ][6789]{1}[0-9]{9}$";
 
     public static void main(String[] args) {
         System.out.println("User Registration System program");
 
         UserRegistrationSystem userRegistrationSystem = new UserRegistrationSystem();
+
+        System.out.println("Enter Mobile Number With Country Code");
+        userRegistrationSystem.isValidMobileNumber(Input.inputStringLineValue());
         System.out.println("Enter First Name");
         userRegistrationSystem.isValidFirstName(Input.inputStringValue());
         System.out.println("Enter Last Name");
@@ -29,6 +34,18 @@ public class UserRegistrationSystem {
         boolean b = m.matches();*/
 
         return b;
+    }
+
+    private void isValidMobileNumber(String mobileNumber) {
+        try {
+        if (isValidInput(MOBILE_NUMBER_PATTERN, mobileNumber)) {
+            System.out.println("Valid Mobile Number");
+        } else {
+            throw new InvalidUserInformationException("Invalid Mobile Number");
+        }
+        }catch (InvalidUserInformationException e){
+            System.out.println(e);
+        }
     }
 
     private void isValidFirstName(String firstName) {
